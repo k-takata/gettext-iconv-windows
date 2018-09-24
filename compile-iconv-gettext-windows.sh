@@ -322,6 +322,9 @@ cd gettext-$BLDGTXT_V_GETTEXT
 bldgtxtApplyPatches "$BLDGTXT_PATCHES/gettext-$BLDGTXT_V_GETTEXT-configure"
 mkdir $BLDGTXT_CONFIGURED/gettext-$BLDGTXT_V_GETTEXT
 cd $BLDGTXT_CONFIGURED/gettext-$BLDGTXT_V_GETTEXT
+if [ "$BLDGTXT_LINK-$BLDGTXT_BITS" = "shared-32" ]; then
+    sed -i.orig 's/^LIBS = @LIBS@$/LIBS = @LIBS@ -XCClinker -static-libgcc/' $BLDGTXT_SOURCE/gettext-$BLDGTXT_V_GETTEXT/gettext-runtime/intl/Makefile.in
+fi
 echo '### Configuring gettext'
 $BLDGTXT_SOURCE/gettext-$BLDGTXT_V_GETTEXT/configure \
     --host=$MXE_TARGETS \
