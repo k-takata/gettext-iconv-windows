@@ -580,7 +580,7 @@ bldgtxtCompileGettext () {
     if test -f "libtextstyle/Makefile"; then
         make $BLDGTXT_MAKE_OPTIONS $BLDGTXT_MAKE_OPTIONS_GETTEXT --directory=libtextstyle
     fi
-    make $BLDGTXT_MAKE_OPTIONS $BLDGTXT_MAKE_OPTIONS_GETTEXT --directory=gettext-tools
+    make $BLDGTXT_MAKE_OPTIONS $BLDGTXT_MAKE_OPTIONS_GETTEXT --directory=gettext-tools CCLD='$(CC) -XCClinker -static-libgcc'
     popd >/dev/null
 }
 

@@ -1,0 +1,20 @@
+--- a/gettext-tools/src/Makefile.in
++++ b/gettext-tools/src/Makefile.in
+@@ -785,7 +785,7 @@
+ am__v_CXX_ = $(am__v_CXX_@AM_DEFAULT_V@)
+ am__v_CXX_0 = @echo "  CXX     " $@;
+ am__v_CXX_1 = 
+-CXXLD = $(CXX)
++CXXLD = $(CC)
+ CXXLINK = $(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) \
+ 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
+ 	$(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+@@ -1796,7 +1796,7 @@
+ LIBOBJS = @LIBOBJS@
+ LIBPTH = @LIBPTH@
+ LIBPTH_PREFIX = @LIBPTH_PREFIX@
+-LIBS = @LIBS@
++LIBS = @LIBS@ -XCClinker "-Wl,-Bstatic -lstdc++ -lgcc -Wl,-Bdynamic"
+ LIBSOCKET = @LIBSOCKET@
+ LIBTESTS_LIBDEPS = @LIBTESTS_LIBDEPS@
+ LIBTHREAD = @LIBTHREAD@

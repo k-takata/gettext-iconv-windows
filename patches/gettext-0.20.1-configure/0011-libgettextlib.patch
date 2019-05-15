@@ -1,0 +1,11 @@
+--- a/gettext-tools/gnulib-lib/Makefile.in
++++ b/gettext-tools/gnulib-lib/Makefile.in
+@@ -2890,7 +2890,7 @@
+ libxml/xpointer.lo: libxml/$(am__dirstamp)
+ 
+ libgettextlib.la: $(libgettextlib_la_OBJECTS) $(libgettextlib_la_DEPENDENCIES) $(EXTRA_libgettextlib_la_DEPENDENCIES) 
+-	$(AM_V_GEN)$(libgettextlib_la_LINK) -rpath $(libdir) $(libgettextlib_la_OBJECTS) $(libgettextlib_la_LIBADD) $(LIBS)
++	$$($(AM_V_GEN)$(libgettextlib_la_LINK) -rpath $(libdir) $(libgettextlib_la_OBJECTS) $(libgettextlib_la_LIBADD) $(LIBS) --dry-run | grep 'mingw32\.' | sed -e 's/-lgcc_s//g' -e 's/libtool: link: //')
+ libxml/rpl_la-DOCBparser.lo: libxml/$(am__dirstamp)
+ libxml/rpl_la-HTMLparser.lo: libxml/$(am__dirstamp)
+ libxml/rpl_la-HTMLtree.lo: libxml/$(am__dirstamp)
